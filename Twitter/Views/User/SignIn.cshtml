@@ -1,0 +1,38 @@
+﻿@model Twitter.Models.Register
+
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+<h5>Sign In</h5>
+<hr />
+<div class="row">
+     <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <form asp-action="SignIn">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="userName" class="control-label">User Name</label>
+                <input asp-for="userName" class="form-control" placeholder="Enter User Name/Email" required/>
+                <span asp-validation-for="userName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label">Password</label>
+                <input asp-for="password" type="password" class="form-control" placeholder="Enter Password" required />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign In" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+      <div class="col-md-2"></div>
+</div>
+
+<div style="text-align: center;">
+    <a asp-action="Register">Don't have account? Sign up</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

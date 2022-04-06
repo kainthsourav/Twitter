@@ -1,0 +1,37 @@
+﻿@model Twitter.Models.Register
+@{
+    ViewData["Title"] = "User Dashboard Page";
+    Layout = "_UserLayout";
+}
+@if (ViewBag.userTweets != null)
+{
+    foreach (var item in ViewBag.userTweets)
+    {
+        <div class="data">
+            <div class="card" style="margin: 20px;">
+                <div class="card-header">
+                    <div class="d-flex">
+                        <h5>
+                        <img src="~/assets/UserDefaultLogo.png" width="50" class="avatar img-circle" alt="avatar" />
+                            Session["ComputerNumber"].ToString();
+                </h5>
+            </div>
+            <div class="ml-auto">
+            </div>
+        </div>
+       
+        <div class="card-body">
+            <h5 class="card-title">   <label>@item.TweetDescription</label></h5>
+            <div class="d-flex ml-auto">
+            </div>
+        </div>
+        </div>
+    </div>
+    }
+
+}
+else
+{
+
+
+}

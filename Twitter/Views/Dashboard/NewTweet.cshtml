@@ -1,0 +1,22 @@
+﻿@model Twitter.Models.TweetModel
+@{
+    ViewData["Title"] = "New Tweet";
+    Layout = "_UserLayout";
+}
+<div>
+    <form asp-action="NewTweet" autocomplete="off">
+          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         <div class="row">
+              <div class="form-group col-12">
+                <label asp-for="TweetDescription" class="control-label">Post Tweet</label>
+                <textarea asp-for="TweetDescription" class="form-control" rows="6" placeholder="Write here" required></textarea>
+                <span asp-validation-for="TweetDescription" class="text-danger"></span>
+              </div>
+        </div>
+        <div class="row">
+             <div class="form-group col-12">
+                <input type="submit" value="Send Tweet" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>

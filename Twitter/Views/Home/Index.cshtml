@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+    <div class="my-5 text-center">
+        <h1>Tweet Application</h1>
+        <img src="~/assets/UserDefaultLogo.png" width="200" class="avatar img-circle" alt="avatar" />
+    </div>
+</div>
