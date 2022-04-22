@@ -7,6 +7,8 @@ using Twitter.DataAccess;
 using Twitter.ViewModel;
 using Xunit;
 using Twitter.Models;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace Twitter.UnitTests
 {
@@ -14,8 +16,11 @@ namespace Twitter.UnitTests
     {
         private readonly DataContext _mockContext;
         private readonly UserController _controller;
+
         public UserControllerShould()
         {
+            var options = new DbContextOptionsBuilder<DataContext>().UseSqlServer("Data Source=mydatacenter.database.windows.net;Initial Catalog=mydatapool;User ID=Poonam;Password=Data@mine12;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False").Options;
+            _mockContext=new DataContext(options);
             _controller = new UserController(_mockContext);
         }
         [Fact]
@@ -30,5 +35,7 @@ namespace Twitter.UnitTests
             var result = _controller.Register();
             Assert.IsType<ViewResult>(result);
         }
+       
+
     }
 }

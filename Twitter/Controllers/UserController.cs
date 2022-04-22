@@ -9,9 +9,6 @@
     public class UserController : Controller
     {
         readonly DataContext _dataContext;
-        const string SessionUserName = "_UserName";
-        const string SessionUserId = "_UserId";
-       
         public UserController(DataContext dataContext)
         {
             _dataContext = dataContext;
@@ -59,9 +56,8 @@
                             || loginDetails.Email == loginDetails.Email && x.password == loginDetails.password).FirstOrDefault();
                 if(isExist!=null)
                 {
-                    
-                    HttpContext.Session.SetString(SessionUserName, isExist.userName.ToString());
-                    HttpContext.Session.SetString(SessionUserId, isExist.Id.ToString());
+                    HttpContext.Session.SetString("_UserName", isExist.userName.ToString());
+                    HttpContext.Session.SetString("_UserId", isExist.Id.ToString());
                     return RedirectToAction("Index", "Dashboard");
                 }
                
@@ -71,7 +67,7 @@
         }
         public IActionResult Profile()
         {
-            var CurrentUser = int.Parse(HttpContext.Session.GetString(SessionUserId));
+            var CurrentUser = int.Parse(HttpContext.Session.GetString("_UserId"));
             var ProfileData = _dataContext.RegisterModel.FirstOrDefault(x =>x.Id==CurrentUser);
             var userTweets = _dataContext.TweetsModel.Where(x => x.UserId == CurrentUser).OrderByDescending(x=>x.createdAt).ToList();
             if (ProfileData != null)
@@ -85,8 +81,8 @@
         }
         public IActionResult Logout()
         {
-            HttpContext.Session.Remove(SessionUserId);
-            HttpContext.Session.Remove(SessionUserName);
+            HttpContext.Session.Remove("_UserId");
+            HttpContext.Session.Remove("_UserName");
             return RedirectToAction("Index", "Home");
         }
     }
