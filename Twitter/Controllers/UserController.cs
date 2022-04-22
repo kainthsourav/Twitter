@@ -55,10 +55,11 @@
         {
             if (ModelState.IsValid)
             {
-               var  isExist=_dataContext.RegisterModel.FirstOrDefault(x => x.userName == loginDetails.userName 
-                             || x.Email==loginDetails.userName && x.password==x.password);
+                var isExist = _dataContext.RegisterModel.Where(x => x.userName == loginDetails.userName
+                            || loginDetails.Email == loginDetails.Email && x.password == loginDetails.password).FirstOrDefault();
                 if(isExist!=null)
                 {
+                    
                     HttpContext.Session.SetString(SessionUserName, isExist.userName.ToString());
                     HttpContext.Session.SetString(SessionUserId, isExist.Id.ToString());
                     return RedirectToAction("Index", "Dashboard");
