@@ -5,6 +5,7 @@ using Twitter.Models;
 using Twitter.DataAccess;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Twitter.Controllers
 {
@@ -12,6 +13,7 @@ namespace Twitter.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private DataContext _dataContext;
+        const string SessionUserId = "_UserId";
 
         public HomeController(ILogger<HomeController> logger,DataContext dataContext)
         {
@@ -21,7 +23,13 @@ namespace Twitter.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var CurrentUser = HttpContext.Session.GetString(SessionUserId);
+            if (string.IsNullOrEmpty(CurrentUser))
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Dashboard");
+
         }
         public async Task<IActionResult> List()
         {

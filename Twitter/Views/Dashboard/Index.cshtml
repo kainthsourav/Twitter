@@ -13,10 +13,11 @@
                     <div class="d-flex">
                         <h5>
                         <img src="~/assets/UserDefaultLogo.png" width="50" class="avatar img-circle" alt="avatar" />
-                            Session["ComputerNumber"].ToString();
+                          @item.UserName
                 </h5>
             </div>
             <div class="ml-auto">
+                <label style="font-size:small"> Posted: @item.createdAt </label>
             </div>
         </div>
        

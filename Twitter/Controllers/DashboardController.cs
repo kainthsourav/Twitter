@@ -39,6 +39,7 @@
             if (ModelState.IsValid)
             {
                 PostedTweet.UserId =int.Parse(HttpContext.Session.GetString(SessionUserId));
+                PostedTweet.UserName=HttpContext.Session.GetString(SessionUserName);
                 PostedTweet.createdAt = DateTime.Now;
                 PostedTweet.updatedAt = DateTime.Now;
                 _dataContext.TweetsModel.Add(PostedTweet);

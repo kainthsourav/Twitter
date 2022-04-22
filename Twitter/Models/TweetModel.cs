@@ -10,6 +10,7 @@
         [Key]
         public int TweetId { get; set; }
         public int UserId { get; set; }
+        public string UserName { get; set; }
         public string TweetDescription { get; set; }
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
