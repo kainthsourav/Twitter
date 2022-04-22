@@ -11,10 +11,11 @@
         readonly DataContext _dataContext;
         const string SessionUserName = "_UserName";
         const string SessionUserId = "_UserId";
-
+       
         public UserController(DataContext dataContext)
         {
             _dataContext = dataContext;
+            
         }
         public IActionResult Register()
         {
@@ -66,11 +67,13 @@
         }
         public IActionResult Profile()
         {
-            var Id=int.Parse(HttpContext.Session.GetString(SessionUserId));
-            var ProfileData = _dataContext.RegisterModel.FirstOrDefault(x =>x.Id==Id);
+            var CurrentUser = int.Parse(HttpContext.Session.GetString(SessionUserId));
+            var ProfileData = _dataContext.RegisterModel.FirstOrDefault(x =>x.Id==CurrentUser);
+            var userTweets = _dataContext.TweetsModel.Where(x => x.UserId == CurrentUser).ToList();
             if (ProfileData != null)
             {
                 ViewBag.UserData = ProfileData;
+                ViewBag.userTweets = userTweets;
                 return View();
             }
             return RedirectToAction("Index", "Home");

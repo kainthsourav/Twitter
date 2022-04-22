@@ -5,7 +5,12 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Twitter", "Twitter\Twitter.csproj", "{CAB11663-291C-4D3B-AC4A-E4E1BFCF4B84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twitter.UnitTests", "Twitter.UnitTests\Twitter.UnitTests.csproj", "{4FE3DC76-F3B4-4EA8-BA41-EF1CAE5C8A4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Twitter.UnitTests", "Twitter.UnitTests\Twitter.UnitTests.csproj", "{4FE3DC76-F3B4-4EA8-BA41-EF1CAE5C8A4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AD17D12F-EC0D-4FD8-B8EC-42F2DE8FCE23}"
+	ProjectSection(SolutionItems) = preProject
+		TablesQuery.sql = TablesQuery.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

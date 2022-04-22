@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("Tweetstorage")]
+    [Table("TweetsData")]
     public class TweetModel
     {
         [Key]
