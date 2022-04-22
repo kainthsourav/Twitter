@@ -28,6 +28,14 @@
     </div>
       <div class="col-md-2"></div>
 </div>
+@if (ViewBag.Message != null)
+{
+    <div class="row">
+        <div class="col-md-4"></div>
+         <div class="col-md-4"> <label style="color:red">@ViewBag.Message</label></div>
+          <div class="col-md-4"></div>
+    </div>
+}
 
 <div style="text-align: center;">
     <a asp-action="Register">Don't have account? Sign up</a>
