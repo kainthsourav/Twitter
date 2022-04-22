@@ -71,7 +71,7 @@
         {
             var CurrentUser = int.Parse(HttpContext.Session.GetString(SessionUserId));
             var ProfileData = _dataContext.RegisterModel.FirstOrDefault(x =>x.Id==CurrentUser);
-            var userTweets = _dataContext.TweetsModel.Where(x => x.UserId == CurrentUser).ToList();
+            var userTweets = _dataContext.TweetsModel.Where(x => x.UserId == CurrentUser).OrderByDescending(x=>x.createdAt).ToList();
             if (ProfileData != null)
             {
                 ViewBag.UserData = ProfileData;
@@ -80,6 +80,12 @@
             }
             return RedirectToAction("Index", "Home");
 
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove(SessionUserId);
+            HttpContext.Session.Remove(SessionUserName);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

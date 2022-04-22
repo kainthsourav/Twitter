@@ -20,7 +20,7 @@
         public IActionResult Index()
         {
             var Id= int.Parse(HttpContext.Session.GetString(SessionUserId));
-            var userTweets = _dataContext.TweetsModel.ToList();
+            var userTweets = _dataContext.TweetsModel.OrderByDescending(x=>x.createdAt).ToList();
             if (userTweets != null && userTweets.Count() != 0)
             {
                ViewBag.userTweets = userTweets;
