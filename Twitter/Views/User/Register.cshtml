@@ -42,7 +42,10 @@
 <div style="text-align: center;">
     <a asp-action="SignIn">Already having account? Sign In</a>
 </div>
-
+@if (ViewBag.Message != null)
+{
+    <script>alert("@ViewBag.Message");</script>
+}
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
